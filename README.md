@@ -55,6 +55,10 @@ print(this:string()) --> vector(8, 6)
     <td>vector(-1, 0)</td>
   </tr>
   <tr>
+    <td>vector.RIGHT</td>
+    <td>vector(1, 0)</td>
+  </tr>
+  <tr>
     <td>vector.ZERO</td>
     <td>vector(0,0)</td>
   </tr>
