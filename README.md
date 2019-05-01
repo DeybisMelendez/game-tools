@@ -1,6 +1,6 @@
 # lua-vector
 
-Vector 2d for Love2d and Lua.
+Vector 2d for Love2d and Lua. Inspired on Vector2() of Godot Engine.
 
 ## How-to-use
 
