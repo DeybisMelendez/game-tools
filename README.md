@@ -86,7 +86,7 @@ vector:normalized(vector)
 Normalizing a vector means reducing its length to 1 while preserving its direction. Get a vector normalized.
 
 ```lua
-vector:distance_to()
+vector:distance_to(vector)
 ```
 Get the distance between 2 vectors.
 
