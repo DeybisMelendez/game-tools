@@ -10,6 +10,31 @@ Download vector.lua and write on main.lua
 vector = require "vector"
 ```
 
+## Propierties
+
+<table>
+  <tr>
+    <td>number</td>
+    <td>x</td>
+  </tr>
+  <tr>
+    <td>number</td>
+    <td>y</td>
+  </tr>
+</table>
+
+## Create a vector
+
+Example:
+```lua
+myVector = vector(5, 4)
+print(myVector:string()) --> vector(5, 4)
+other = vector(3, 2)
+if myVector.x > other.x then print(other.y) --> 2
+this = myVector + other
+print(this:string()) --> vector(8, 6)
+```
+
 ## Constants
 
 <table>
