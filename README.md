@@ -77,7 +77,7 @@ vector:getAngle()
 Get angle of vector in radians.
 
 ```lua
-vector:normalized()
+vector:normalized(vector)
 ```
 Normalizing a vector means reducing its length to 1 while preserving its direction. Get a vector normalized.
 
