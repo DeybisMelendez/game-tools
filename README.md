@@ -2,7 +2,7 @@
 
 Vector 2d for Love2d and Lua. Inspired on Vector2() of Godot Engine.
 
-## How-to-use
+## How to use
 
 Download vector.lua and write on main.lua
 
@@ -89,6 +89,22 @@ Normalizing a vector means reducing its length to 1 while preserving its directi
 vector:distance_to(vector)
 ```
 Get the distance between 2 vectors.
+
+```lua
+vector:dot(vector)
+```
+Get the [dot product](https://en.wikipedia.org/wiki/Dot_product) of 2 vectors.
+
+```lua
+vector:abs()
+```
+Get absolute value of vector.
+
+```lua
+vector:round(decimals)
+```
+Get vector with `decimals`, 0 or ignore for integer number. Example: `vector(2.5, 3.4):round() --> vector(3, 3)`
+
 
 ## Vector Math
 
