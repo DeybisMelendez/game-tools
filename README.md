@@ -73,60 +73,109 @@ print(this:string()) --> vector(8, 6)
 ```lua
 vector:string()
 ```
-Get vector as string
+Returns the vector as string, also, `tostring(vector)` works.
 
 ```lua
-vector:getAngle()
+vector:angle()
 ```
-Get angle of vector in radians.
+Returns the angle of vector in radians.
 
 ```lua
 vector:normalized(vector)
 ```
-Normalizing a vector means reducing its length to 1 while preserving its direction. Get a vector normalized.
+Returns the vector normalized. Normalizing a vector means reducing its length to 1 while preserving its direction.
 
 ```lua
-vector:distance_to(vector)
+vector:distanceTo(vector)
 ```
-Get the distance between 2 vectors.
+Returns the distance between 2 vectors.
+
+```lua
+vector:distanceSquaredTo(vector)
+```
+Returns the distance squared between 2 vectors.
+
+```lua
+vector:distance()
+```
+Returns the distance of the vector.
+
+```lua
+vector:distanceSquared()
+```
+Returns the distance squared of the vector.
 
 ```lua
 vector:dot(vector)
 ```
-Get the [dot product](https://en.wikipedia.org/wiki/Dot_product) of 2 vectors.
+Returns the [dot product](https://en.wikipedia.org/wiki/Dot_product) of 2 vectors.
+
+```lua
+vector:perpDot(vector)
+```
+Returns the [Perp Dot Product](http://mathworld.wolfram.com/PerpDotProduct.html) of 2 vectors.
+
+```lua
+vector:toPolar(angle, lenght)
+```
+Returns the polar coordinate of the vector.
 
 ```lua
 vector:abs()
 ```
-Get absolute value of vector.
+Returns the absolute value of the vector.
 
 ```lua
 vector:round(decimals)
 ```
-Get vector with `decimals`, 0 or ignore for integer number. Example: `vector(2.5, 3.4):round() --> vector(3, 3)`
+Returns the vector with `decimals`, 0 or ignore for integer number. Example: `vector(2.5, 3.4):round() --> vector(3, 3)`
 
+```lua
+vector:rotated(phi)
+```
+Returns the vector rotated by `phi`radians.
+
+```lua
+vector:cross(vector)
+```
+Returns the 2 dimensional analog of the cross product with the given vector.
+
+```lua
+vector:perpendicular()
+```
+Returns a vector rotated 90°.
+
+```lua
+vector:lerpTo(vector, time)
+```
+Returns the result of the linear interpolation between this vector and `vector` by amount `time`. `time` is in the range of 0.0 - 1.0, representing the amount of interpolation.
+
+```lua
+vector:unpack()
+```
+Returns `x, y` value of the vector.
 
 ## Vector Math
 
-### Add
+### Addition
 
 ```lua
 this = vector(a, b) + vector(c, d) --> vector(a+c, b+d)
 ```
 
-### Substract
+### Substraction
 
 ```lua
 this = vector(a, b) - vector(c, d) --> vector(a-c, b-d)
 ```
 
-### Multiply
+### Multiplication
 
 ```lua
 this = vector(a, b) * vector(c, d) --> vector(a*c, b*d)
 ```
 
-### Divide
+### Division
 
 ```lua
 this = vector(a, b) / vector(c, d) --> vector(a/c, b/d)
