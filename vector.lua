@@ -43,22 +43,19 @@ local mt = { -- Metatable of vector
             local m = (self.x^2 + self.y^2)^0.5 --magnitude
             return vector(self.x / m, self.y / m)
         end
-        function vec:direction()
-            return math.atan2(self.y, self.x)
-        end
-        function vec:distanceTo(v)
-            return self:distanceTo2(v)^0.5
-        end
-        function vec:distanceTo2(v)
+        function vec:distanceSquaredTo(v)
             local x1, y1 = self.x, self.y
             local x2, y2 = v.x, v.y
             return (x2 - x1)^2 + (y2 - y1)^2
         end
-        function vec:distance()
-            return (self:distance2())^0.5
+        function vec:distanceTo(v)
+            return self:distanceSquaredTo(v)^0.5
         end
-        function vec:distance2()
+        function vec:distanceSquared()
             return self.x^2 + self.y^2
+        end
+        function vec:distance()
+            return (self:distanceSquared())^0.5
         end
         function vec:dot(v)
             return self.x * v.x + self.y * v.y
