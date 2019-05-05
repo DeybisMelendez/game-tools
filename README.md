@@ -30,7 +30,7 @@ Example:
 myVector = vector(5, 4)
 print(myVector:string()) --> vector(5, 4)
 other = vector(3, 2)
-if myVector.x > other.x then print(other.y) --> 2
+if myVector.x > other.x then print(other.y) end --> 2
 this = myVector + other
 print(this:string()) --> vector(8, 6)
 ```
