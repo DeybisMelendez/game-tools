@@ -81,7 +81,7 @@ vector:angle()
 Returns the angle of vector in radians.
 
 ```lua
-vector:normalized(vector)
+vector:normalized()
 ```
 Returns the vector normalized. Normalizing a vector means reducing its length to 1 while preserving its direction.
 
