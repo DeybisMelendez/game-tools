@@ -28,6 +28,14 @@ local vecMt = { -- Metatable of vector value
     end,
     __eq = function(a, b)
         return a.x == b.x and a.y == b.y
+    end,
+    __pow = function(vec, value)
+        return vector(vec.x ^ value, vec.y ^ value)
+    end,
+    __concat = function(a, b)
+        if type(a) == "string" then return a .. b:string() end
+        if type(b) == "string" then return a:string() .. b end
+        return a:string() .. b:string()
     end
 }
 local mt = { -- Metatable of vector
@@ -41,7 +49,7 @@ local mt = { -- Metatable of vector
         end
         function vec:normalized()
             local m = (self.x^2 + self.y^2)^0.5 --magnitude
-            return vector(self.x / m, self.y / m)
+            self.x, self.y = self.x / m, self.y / m
         end
         function vec:distanceSquaredTo(v)
             local x1, y1 = self.x, self.y
@@ -64,7 +72,7 @@ local mt = { -- Metatable of vector
             return self.x * v.x - self.y * v.y
         end
         function vec:abs()
-            return vector(math.abs(self.x), math.abs(self.y))
+            self.x, self.y = math.abs(self.x), math.abs(self.y)
         end
         function vec:round(dec)
             dec = dec or 0
@@ -74,24 +82,26 @@ local mt = { -- Metatable of vector
             else x = math.ceil(self.x * mult - 0.5) / mult end
             if self.y >= 0 then y = math.floor(self.y * mult + 0.5) / mult
             else y = math.ceil(self.y * mult - 0.5) / mult end
-            return vector(x, y)
+            self.x, self.y = x, y
         end
         function vec:toPolar(angle, len)
             len = len or 1
-            return vector(math.cos(angle) * len, math.sin(angle) * len)
+            self.x, self.y = math.cos(angle) * len, math.sin(angle) * len
         end
         function vec:rotated(phi)
-            return vector(math.cos(phi) * self.x - math.sin(phi) * self.y, math.sin(phi) * self.x + math.cos(phi) * self.y)
+            self.x = math.cos(phi) * self.x - math.sin(phi) * self.y
+            self.y = math.sin(phi) * self.x + math.cos(phi) * self.y
         end
         function vec:cross(v)
-            return vector(self.x * v.y - self.y * v.x)
+            return self.x * v.y - self.y * v.x
         end
         function vec:perpendicular()
-            return vector(-self.y, self.x)
+            self.x = -self.y
+            self.y = self.x
         end
         function vec:lerpTo(v, t)
             local i = 1 - t
-            return vector(self.x * i + v.x * t, self.y * i + v.y * t)
+            self.x, self.y = self.x * i + v.x * t, self.y * i + v.y * t
         end
         function vec:unpack()
             return self.x, self.y
