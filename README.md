@@ -27,12 +27,13 @@ vector = require "vector"
 
 Example:
 ```lua
-myVector = vector(5, 4)
-print(myVector:string()) --> vector(5, 4)
-other = vector(3, 2)
-if myVector.x > other.x then print(other.y) end --> 2
-this = myVector + other
-print(this:string()) --> vector(8, 6)
+a = vector(5, 4)
+print(a:string()) --> vector(5, 4)
+b = vector(3, 2)
+if a.x > b.x then print(a .. b) end --> vector(5, 4)vector(3, 2)
+c = a + b
+print(c:string()) --> vector(8, 6)
+b = -b --> vector(-3, -2)
 ```
 
 ## Constants
@@ -83,7 +84,7 @@ Returns the angle of vector in radians.
 ```lua
 vector:normalized()
 ```
-Returns the vector normalized. Normalizing a vector means reducing its length to 1 while preserving its direction.
+Set the vector normalized. Normalizing a vector means reducing its length to 1 while preserving its direction.
 
 ```lua
 vector:distanceTo(vector)
@@ -118,22 +119,22 @@ Returns the [Perp Dot Product](http://mathworld.wolfram.com/PerpDotProduct.html)
 ```lua
 vector:toPolar(angle, lenght)
 ```
-Returns the polar coordinate of the vector.
+Set the vector to the polar coordinate.
 
 ```lua
 vector:abs()
 ```
-Returns the absolute value of the vector.
+Set the absolute value of the vector.
 
 ```lua
 vector:round(decimals)
 ```
-Returns the vector with `decimals`, 0 or ignore for integer number. Example: `vector(2.5, 3.4):round() --> vector(3, 3)`
+Set the vector with `decimals`, 0 or ignore for integer number. Example: `vector(2.5, 3.4):round() --> vector(3, 3)`
 
 ```lua
 vector:rotated(phi)
 ```
-Returns the vector rotated by `phi`radians.
+Set the vector rotated by `phi`radians.
 
 ```lua
 vector:cross(vector)
@@ -143,12 +144,12 @@ Returns the 2 dimensional analog of the cross product with the given vector.
 ```lua
 vector:perpendicular()
 ```
-Returns a vector rotated 90°.
+Set the vector rotated 90°.
 
 ```lua
 vector:lerpTo(vector, time)
 ```
-Returns the result of the linear interpolation between this vector and `vector` by amount `time`. `time` is in the range of 0.0 - 1.0, representing the amount of interpolation.
+Set the result of the linear interpolation between this vector and `vector` by amount `time`. `time` is in the range of 0.0 - 1.0, representing the amount of interpolation.
 
 ```lua
 vector:unpack()
@@ -179,4 +180,15 @@ this = vector(a, b) * vector(c, d) --> vector(a*c, b*d)
 
 ```lua
 this = vector(a, b) / vector(c, d) --> vector(a/c, b/d)
+```
+### Exponetiation
+
+```lua
+this = vector(a, b) ^ c --> vector(a^c, b^c)
+```
+
+### Concatenation
+
+```lua
+this = vector(a, b) .. vector(c, d) --> "vector(a, b)vector(c, d)"
 ```
