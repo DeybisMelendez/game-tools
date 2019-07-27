@@ -105,12 +105,12 @@ local mt = { -- Metatable of vector
         function vec:round(dec)
             dec = dec or 0
             local mult = 10^(dec)
-            local x, y
-            if self.x >= 0 then x = math.floor(self.x * mult + 0.5) / mult
-            else x = math.ceil(self.x * mult - 0.5) / mult end
-            if self.y >= 0 then y = math.floor(self.y * mult + 0.5) / mult
-            else y = math.ceil(self.y * mult - 0.5) / mult end
-            self.x, self.y = x, y
+            local nx, ny
+            if self.x >= 0 then nx = math.floor(self.x * mult + 0.5) / mult
+            else nx = math.ceil(self.x * mult - 0.5) / mult end
+            if self.y >= 0 then ny = math.floor(self.y * mult + 0.5) / mult
+            else ny = math.ceil(self.y * mult - 0.5) / mult end
+            self.x, self.y = nx, ny
         end
         function vec:toPolar(angle, len)
             len = len or 1
