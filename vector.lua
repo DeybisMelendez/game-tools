@@ -67,7 +67,7 @@ local vecMt = {
     end
 }
 local mt = { -- Metatable of vector
-    __call = function(self, x, y)
+    __call = function(_, x, y)
         local vec = {x = x, y = y}
         function vec:string()
             return "vector(" .. self.x .. ", " .. self.y ..")"
