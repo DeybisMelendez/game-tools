@@ -2,6 +2,8 @@
 
 Vector 2d for Love2d and Lua. Inspired on Vector2() of Godot Engine.
 
+[![Coverage Status](https://coveralls.io/repos/github/DeybisMelendez/lua-vector/badge.svg?branch=master)](https://coveralls.io/github/DeybisMelendez/lua-vector?branch=master)
+
 ## How to use
 
 Download vector.lua and write on main.lua
