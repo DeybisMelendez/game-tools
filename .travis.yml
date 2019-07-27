@@ -3,10 +3,6 @@ sudo: false
 
 env:
   - LUA="lua=5.1"
-  - LUA="lua=5.2"
-  - LUA="lua=5.3"
-  - LUA="luajit=2.0"
-  - LUA="luajit=2.1"
 
 before_install:
   - pip install hererocks
@@ -14,19 +10,19 @@ before_install:
   - export PATH=$PATH:$PWD/lua_install/bin # Add directory with all installed binaries to PATH
 
 install:
-  - luarocks install luacheck
   - luarocks install busted
-  - luarocks install luacov
-  - luarocks install luacov-coveralls
 
 script:
-  - luacheck --globals love --std max+busted *.lua spec
-  - busted --verbose --coverage
+  - busted
 
 after_success:
-  - luacov-coveralls -e spec/ -e $TRAVIS_BUILD_DIR/lua_install
+  - luacov-coveralls --exclude $TRAVIS_BUILD_DIR/lua_install
 
 branches:
+  only:
+    - master
+    - stable
+    - beta
   except:
     - gh-pages
 
