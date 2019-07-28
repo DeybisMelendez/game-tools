@@ -125,9 +125,9 @@ local mt = { -- Metatable of vector
             return self.x * v.y - self.y * v.x
         end
         function vec:perpendicular()
-	    local x, y = self.x, self.y
-            self.x = -y
-            self.y = x
+	    local px, py = self.x, self.y
+            self.x = -py
+            self.y = px
         end
         function vec:lerpTo(v, t)
             local i = 1 - t
