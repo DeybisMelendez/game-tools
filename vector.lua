@@ -77,7 +77,8 @@ local mt = { -- Metatable of vector
         end
         function vec:normalized()
             local m = (self.x^2 + self.y^2)^0.5 --magnitude
-            self.x, self.y = self.x / m, self.y / m
+            if self.x/m ~= self.x/m then self.x = 0 else self.x = self.x/m end
+			if self.y/m ~= self.y/m then self.y = 0 else self.y = self.y/m end
         end
         function vec:distanceSquaredTo(v)
             local x1, y1 = self.x, self.y
