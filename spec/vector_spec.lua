@@ -34,7 +34,7 @@ describe("vector", function()
 			assert.is_equal(vec.x + vec.y, 2)
 			vec.x, vec.y = 0.55, 0.45
 			vec:round()
-			assert.is_equal(vec.x + vec.y, 1)
+			assert.is_equal(math.floor(vec.x + vec.y), 1)
 			vec:toPolar(0)
 			assert.is_equal(vec.x + vec.y, 1)
 			vec:rotated(math.pi)
