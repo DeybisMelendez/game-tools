@@ -38,7 +38,7 @@ describe("vector", function()
 			vec:toPolar(0)
 			assert.is_equal(math.floor(vec.x + vec.y), 1)
 			vec:rotated(math.pi)
-			assert.is_equal(math.floor(vec.x + vec.y), -1)
+			assert.is_equal(math.floor(vec.x + vec.y), -2)
 			assert.is_equal(vec:cross(vector.ZERO), 0)
 			vec.x, vec.y = 1, 2
 			assert.is_equal(vec:perpendicular(), vector(-2,1))
