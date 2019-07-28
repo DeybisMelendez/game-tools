@@ -78,7 +78,7 @@ local mt = { -- Metatable of vector
         function vec:normalized()
             local m = (self.x^2 + self.y^2)^0.5 --magnitude
             if self.x/m ~= self.x/m then self.x = 0 else self.x = self.x/m end
-			if self.y/m ~= self.y/m then self.y = 0 else self.y = self.y/m end
+	    if self.y/m ~= self.y/m then self.y = 0 else self.y = self.y/m end
         end
         function vec:distanceSquaredTo(v)
             local x1, y1 = self.x, self.y
@@ -125,8 +125,9 @@ local mt = { -- Metatable of vector
             return self.x * v.y - self.y * v.x
         end
         function vec:perpendicular()
-            self.x = -self.y
-            self.y = self.x
+	    local x, y = self.x, self.y
+            self.x = -y
+            self.y = x
         end
         function vec:lerpTo(v, t)
             local i = 1 - t
