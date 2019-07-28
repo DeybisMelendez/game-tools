@@ -6,7 +6,7 @@ describe("vector", function()
 		function()
 			local x, y = 1, 2
 			local vec = vector(x, y)
-		 	assert.is_equal(x, vec.x)
+			assert.is_equal(x, vec.x)
 			assert.is_equal(y, vec.y)
 			assert.is_equal(vec, vector(x, y))
 			assert.is_equal(vector.UP, vector(0,-1))
@@ -49,4 +49,3 @@ describe("vector", function()
 		end)
 	end)
 end)
-
