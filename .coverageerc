@@ -1,5 +1,0 @@
-[run]
- omit =
- /spec/*
- */home/*
- .coverageerc
