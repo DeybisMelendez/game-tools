@@ -24,7 +24,7 @@ script:
   - busted --verbose --coverage
 
 after_success:
-  - luacov-coveralls -r ./
+  - luacov-coveralls -e ^.-/share/lua/5.%d/, src/lua/
 
 branches:
   only:
