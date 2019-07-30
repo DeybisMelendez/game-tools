@@ -21,10 +21,10 @@ install:
 
 script:
   - luacheck --std max+busted *.lua spec
-  - busted --verbose --coverage vector.lua
+  - busted --verbose --coverage
 
 after_success:
-  - luacov-coveralls -e $TRAVIS_BUILD_DIR/lua_install/
+  - luacov-coveralls -e $TRAVIS_BUILD_DIR/lua_install
 
 branches:
   only:
