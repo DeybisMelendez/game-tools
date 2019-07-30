@@ -24,7 +24,7 @@ script:
   - busted --verbose --coverage
 
 after_success:
-  - luacov-coveralls -e /home/travis/build/DeybisMelendez/lua-vector/lua_install/
+  - luacov-coveralls -r ./
 
 branches:
   only:
