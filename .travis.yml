@@ -15,17 +15,9 @@ before_install:
 
 install:
   - luarocks install luacheck
-  - luarocks install busted
-  - luarocks install luacov
-  - luarocks install luacov-coveralls
 
 script:
-  - luacheck --std max+busted *.lua spec
-  - busted --verbose --coverage
-  - lua -lluacov ./vector.lua
-
-after_success:
-  - luacov-coveralls -e $TRAVIS_BUILD_DIR/lua-install/
+  - luacheck --std max+love *.lua
 branches:
   only:
     - master
