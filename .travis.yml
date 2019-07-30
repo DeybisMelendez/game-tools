@@ -24,7 +24,7 @@ script:
   - busted --verbose --coverage
 
 after_success:
-  - luacov-coveralls -e $TRAVIS_BUILD_DIR/./
+  - luacov-coveralls -e $TRAVIS_BUILD_DIR/
 
 branches:
   only:
