@@ -28,8 +28,8 @@ SOFTWARE.
 
 local vector = {_VERSION = "v0.6.0", _TYPE = "module", _NAME = "vector"}
 local vecMt = {
-    __tostring = function(self)
-        return self:string()
+    __tostring = function(s)
+        return "vector(" .. s.x .. ", " .. s.y ..")"
     end,
     __add = function(a, b)
         if type(a) == "number" then return vector(a + b.x, a + b.y) end
@@ -64,78 +64,74 @@ local vecMt = {
         if type(a) == "string" then return a .. b:string() end
         if type(b) == "string" then return a:string() .. b end
         return a:string() .. b:string()
-    end
+    end,
+	angle = function(s) return math.atan2(s.y, s.x) end,
+	normalized = function(s)
+		local m = (s.x^2 + s.y^2)^0.5 --magnitude
+		if s.x/m ~= s.x/m then s.x = 0 else s.x = s.x/m end
+		if s.y/m ~= s.y/m then s.y = 0 else s.y = s.y/m end
+	end,
+	distanceSquaredTo = function(s, v)
+		local x1, y1 = s.x, s.y
+		local x2, y2 = v.x, v.y
+		return (x2 - x1)^2 + (y2 - y1)^2
+	end,
+	distanceTo = function(s, v)
+		return s:distanceSquaredTo(v)^0.5
+	end,
+	distanceSquared = function(s)
+		return s.x^2 + s.y^2
+	end,
+	distance = function(s)
+		return (s:distanceSquared())^0.5
+	end,
+	dot = function(s, v)
+		return s.x * v.x + s.y * v.y
+	end,
+	perpDot = function(s, v)
+		return s.x * v.x - s.y * v.y
+	end,
+	abs = function(s)
+		s.x, s.y = math.abs(s.x), math.abs(s.y)
+	end,
+	round = function(s, dec)
+		dec = dec or 0
+		local mult = 10^(dec)
+		local nx, ny
+		if s.x >= 0 then nx = math.floor(s.x * mult + 0.5) / mult
+		else nx = math.ceil(s.x * mult - 0.5) / mult end
+		if s.y >= 0 then ny = math.floor(s.y * mult + 0.5) / mult
+		else ny = math.ceil(s.y * mult - 0.5) / mult end
+		s.x, s.y = nx, ny
+	end,
+	toPolar = function(s, angle, len)
+		len = len or 1
+		s.x, s.y = math.cos(angle) * len, math.sin(angle) * len
+	end,
+	rotated = function(s, phi)
+		s.x = math.cos(phi) * s.x - math.sin(phi) * s.y
+		s.y = math.sin(phi) * s.x + math.cos(phi) * s.y
+	end,
+	cross = function(s, v)
+		return s.x * v.y - s.y * v.x
+	end,
+	perpendicular = function(s)
+		local px, py = s.x, s.y
+		s.x, s.y = -py, px
+	end,
+	lerpTo = function(s, v, t)
+		local i = 1 - t
+		s.x, s.y = s.x * i + v.x * t, s.y * i + v.y * t
+	end,
+	unpack = function(s)
+		return s.x, s.y
+	end
 }
+vecMt.__index = vecMt
 local mt = { -- Metatable of vector
     __call = function(_, x, y)
         local vec = {x = x or 0, y = y or 0}
-        function vec:string()
-            return "vector(" .. self.x .. ", " .. self.y ..")"
-        end
-        function vec:angle() -- Radians
-            return math.atan2(self.y, self.x)
-        end
-        function vec:normalized()
-            local m = (self.x^2 + self.y^2)^0.5 --magnitude
-            if self.x/m ~= self.x/m then self.x = 0 else self.x = self.x/m end
-	    if self.y/m ~= self.y/m then self.y = 0 else self.y = self.y/m end
-        end
-        function vec:distanceSquaredTo(v)
-            local x1, y1 = self.x, self.y
-            local x2, y2 = v.x, v.y
-            return (x2 - x1)^2 + (y2 - y1)^2
-        end
-        function vec:distanceTo(v)
-            return self:distanceSquaredTo(v)^0.5
-        end
-        function vec:distanceSquared()
-            return self.x^2 + self.y^2
-        end
-        function vec:distance()
-            return (self:distanceSquared())^0.5
-        end
-        function vec:dot(v)
-            return self.x * v.x + self.y * v.y
-        end
-        function vec:perpDot(v)
-            return self.x * v.x - self.y * v.y
-        end
-        function vec:abs()
-            self.x, self.y = math.abs(self.x), math.abs(self.y)
-        end
-        function vec:round(dec)
-            dec = dec or 0
-            local mult = 10^(dec)
-            local nx, ny
-            if self.x >= 0 then nx = math.floor(self.x * mult + 0.5) / mult
-            else nx = math.ceil(self.x * mult - 0.5) / mult end
-            if self.y >= 0 then ny = math.floor(self.y * mult + 0.5) / mult
-            else ny = math.ceil(self.y * mult - 0.5) / mult end
-            self.x, self.y = nx, ny
-        end
-        function vec:toPolar(angle, len)
-            len = len or 1
-            self.x, self.y = math.cos(angle) * len, math.sin(angle) * len
-        end
-        function vec:rotated(phi)
-            self.x = math.cos(phi) * self.x - math.sin(phi) * self.y
-            self.y = math.sin(phi) * self.x + math.cos(phi) * self.y
-        end
-        function vec:cross(v)
-            return self.x * v.y - self.y * v.x
-        end
-        function vec:perpendicular()
-	    local px, py = self.x, self.y
-            self.x = -py
-            self.y = px
-        end
-        function vec:lerpTo(v, t)
-            local i = 1 - t
-            self.x, self.y = self.x * i + v.x * t, self.y * i + v.y * t
-        end
-        function vec:unpack()
-            return self.x, self.y
-        end
+		--vecMt.__index = vecMt
         setmetatable(vec, vecMt)
         return vec
     end
