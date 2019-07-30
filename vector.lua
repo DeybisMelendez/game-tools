@@ -26,7 +26,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ]]
 
-local vector = {_VERSION = "v0.6.0", _TYPE = "module", _NAME = "vector"}
+local vector = {_VERSION = "v0.7.0", _TYPE = "module", _NAME = "vector"}
 local vecMt = {
     __tostring = function(s)
         return "vector(" .. s.x .. ", " .. s.y ..")"
