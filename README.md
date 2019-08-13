@@ -3,6 +3,7 @@
 Vector 2d for Love2d and Lua. Inspired on Vector2() of Godot Engine.
 
 [![Build Status](https://travis-ci.org/DeybisMelendez/lua-vector.svg?branch=master)](https://travis-ci.org/DeybisMelendez/lua-vector)
+[![Build status](https://ci.appveyor.com/api/projects/status/jdmjooteware0ldo/branch/master?svg=true)](https://ci.appveyor.com/project/DeybisMelendez/lua-vector/branch/master)
 
 ## How to use
 
