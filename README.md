@@ -30,11 +30,11 @@ vector = require "vector"
 Example:
 ```lua
 a = vector(5, 4)
-print(a:string()) --> vector(5, 4)
+print(a) --> vector(5, 4) or print(tostring(a))
 b = vector(3, 2)
 if a.x > b.x then print(a .. b) end --> vector(5, 4)vector(3, 2)
 c = a + b
-print(c:string()) --> vector(8, 6)
+print(c) --> vector(8, 6) or print(tostring(c))
 b = -b --> vector(-3, -2)
 ```
 
@@ -72,11 +72,6 @@ b = -b --> vector(-3, -2)
 </table>
 
 ## Functions
-
-```lua
-vector:string()
-```
-Returns the vector as string, also, `tostring(vector)` works.
 
 ```lua
 vector:angle()
