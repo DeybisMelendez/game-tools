@@ -13,7 +13,7 @@ Download vector.lua and write on main.lua
 vector = require "vector"
 ```
 
-## Propierties
+## Properties
 
 <table>
   <tr>
