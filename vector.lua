@@ -5,7 +5,7 @@ Web: https://github.com/DeybisMelendez/lua-vector
 
 MIT License
 
-Copyright (c) 2019 Deybis Melendez
+Copyright (c) 2020 Deybis Melendez
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -26,29 +26,29 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ]]
 
-local vector = {_VERSION = "v0.7.0", _TYPE = "module", _NAME = "vector"}
-local vecMt = {
+local vector = {_VERSION = "v0.8.0", _TYPE = "module", _NAME = "lua-vector"}
+local newVectorMt = {
     __tostring = function(s)
         return "vector(" .. s.x .. ", " .. s.y ..")"
     end,
     __add = function(a, b)
-        if type(a) == "number" then return vector(a + b.x, a + b.y) end
-        if type(b) == "number" then return vector(a.x + b, a.y + b) end
+        if type(a) == "number" then return vector(a + b.x, a + b.y)
+        elseif type(b) == "number" then return vector(a.x + b, a.y + b) end
         return vector(a.x + b.x, a.y + b.y)
     end,
     __sub = function(a, b)
-        if type(a) == "number" then return vector(a - b.x, a - b.y) end
-        if type(b) == "number" then return vector(a.x - b, a.y - b) end
+        if type(a) == "number" then return vector(a - b.x, a - b.y)
+        elseif type(b) == "number" then return vector(a.x - b, a.y - b) end
         return vector(a.x - b.x, a.y - b.y)
     end,
     __mul = function(a, b)
-        if type(a) == "number" then return vector(a * b.x, a * b.y) end
-        if type(b) == "number" then return vector(a.x * b, a.y * b) end
+        if type(a) == "number" then return vector(a * b.x, a * b.y)
+        elseif type(b) == "number" then return vector(a.x * b, a.y * b) end
         return vector(a.x * b.x, a.y * b.y)
     end,
     __div = function(a, b)
-        if type(a) == "number" then return vector(a / b.x, a / b.y) end
-        if type(b) == "number" then return vector(a.x / b, a.y / b) end
+        if type(a) == "number" then return vector(a / b.x, a / b.y)
+        elseif type(b) == "number" then return vector(a.x / b, a.y / b) end
         return vector(a.x / b.x, a.y / b.y)
     end,
     __unm = function(t)
@@ -61,91 +61,109 @@ local vecMt = {
         return vector(vec.x ^ value, vec.y ^ value)
     end,
     __concat = function(a, b)
-        if type(a) == "string" then return a .. b:string() end
-        if type(b) == "string" then return a:string() .. b end
-        return a:string() .. b:string()
-    end,
-	angle = function(s) return math.atan2(s.y, s.x) end,
-	normalized = function(s)
-		local m = (s.x^2 + s.y^2)^0.5 --magnitude
-		if s.x/m ~= s.x/m then s.x = 0 else s.x = s.x/m end
-		if s.y/m ~= s.y/m then s.y = 0 else s.y = s.y/m end
-	end,
-	distanceSquaredTo = function(s, v)
-		local x1, y1 = s.x, s.y
-		local x2, y2 = v.x, v.y
-		return (x2 - x1)^2 + (y2 - y1)^2
-	end,
-	distanceTo = function(s, v)
-		return s:distanceSquaredTo(v)^0.5
-	end,
-	distanceSquared = function(s)
-		return s.x^2 + s.y^2
-	end,
-	distance = function(s)
-		return (s:distanceSquared())^0.5
-	end,
-	dot = function(s, v)
-		return s.x * v.x + s.y * v.y
-	end,
-	perpDot = function(s, v)
-		return s.x * v.x - s.y * v.y
-	end,
-	abs = function(s)
-		s.x, s.y = math.abs(s.x), math.abs(s.y)
-	end,
-	round = function(s, dec)
-		dec = dec or 0
-		local mult = 10^(dec)
-		local nx, ny
-		if s.x >= 0 then nx = math.floor(s.x * mult + 0.5) / mult
-		else nx = math.ceil(s.x * mult - 0.5) / mult end
-		if s.y >= 0 then ny = math.floor(s.y * mult + 0.5) / mult
-		else ny = math.ceil(s.y * mult - 0.5) / mult end
-		s.x, s.y = nx, ny
-	end,
-	toPolar = function(s, angle, len)
-		len = len or 1
-		s.x, s.y = math.cos(angle) * len, math.sin(angle) * len
-	end,
-	rotated = function(s, phi)
-		s.x = math.cos(phi) * s.x - math.sin(phi) * s.y
-		s.y = math.sin(phi) * s.x + math.cos(phi) * s.y
-	end,
-	cross = function(s, v)
-		return s.x * v.y - s.y * v.x
-	end,
-	perpendicular = function(s)
-		local px, py = s.x, s.y
-		s.x, s.y = -py, px
-	end,
-	lerpTo = function(s, v, t)
-		local i = 1 - t
-		s.x, s.y = s.x * i + v.x * t, s.y * i + v.y * t
-	end,
-	unpack = function(s)
-		return s.x, s.y
-	end
+        if type(a) == "string" then return a .. tostring(b) end
+        if type(b) == "string" then return tostring(a) .. b end
+        return tostring(a) .. tostring(b)
+    end
 }
-vecMt.__index = vecMt
-local mt = { -- Metatable of vector
+local mt = {
     __call = function(_, x, y)
         local vec = {x = x or 0, y = y or 0}
-		--vecMt.__index = vecMt
-        setmetatable(vec, vecMt)
+        setmetatable(vec, newVectorMt)
         return vec
     end
 }
 
+function vector.angle(v)
+    return math.atan2(v.y, v.x)
+end
+
+function vector.normalized(v)
+    local m = (v.x^2 + v.y^2)^0.5 --magnitude
+    if v.x/m ~= v.x/m then v.x = 0 else v.x = v.x/m end
+    if v.y/m ~= v.y/m then v.y = 0 else v.y = v.y/m end
+end
+
+function vector.round(v, dec)
+    dec = dec or 0
+    local mult = 10^(dec)
+    local nx, ny
+    if v.x >= 0 then nx = math.floor(v.x * mult + 0.5) / mult
+    else nx = math.ceil(v.x * mult - 0.5) / mult end
+    if v.y >= 0 then ny = math.floor(v.y * mult + 0.5) / mult
+    else ny = math.ceil(v.y * mult - 0.5) / mult end
+    v.x, v.y = nx, ny
+    return v
+end
+
+function vector.distanceSquaredTo(s, v)
+    local x1, y1 = s.x, s.y
+    local x2, y2 = v.x, v.y
+    return (x2 - x1)^2 + (y2 - y1)^2
+end
+
+function vector.distanceTo(s, v)
+    return vector.distanceSquaredTo(s, v)^0.5
+end
+
+function vector.distanceSquared(v)
+    return v.x^2 + v.y^2
+end
+
+function vector.distance(v)
+    return (vector.distanceSquared(v))^0.5
+end
+
+function vector.dot(s, v)
+    return s.x * v.x + s.y * v.y
+end
+
+function vector.perpDot(s, v)
+    return s.x * v.x - s.y * v.y
+end
+
+function vector.abs(v)
+    v.x, v.y = math.abs(v.x), math.abs(v.y)
+    return v
+end
+
+function vector.toPolar(v, angle, len)
+    len = len or 1
+    v.x, v.y = math.cos(angle) * len, math.sin(angle) * len
+    return v
+end
+
+function vector.rotated(v, phi)
+    v.x = math.cos(phi) * v.x - math.sin(phi) * v.y
+    v.y = math.sin(phi) * v.x + math.cos(phi) * v.y
+    return v
+end
+
+function vector.cross(s, v)
+    return s.x * v.y - s.y * v.x
+end
+
+function vector.perpendicular(v)
+    local px, py = v.x, v.y
+    v.x, v.y = -py, px
+    return v
+end
+
+function vector.lerp(s, v, t)
+    local i = 1 - t
+    s.x, s.y = s.x * i + v.x * t, s.y * i + v.y * t
+    return s
+end
+
+function vector.unpack(v)
+    return v.x, v.y
+end
+
 setmetatable(vector, mt)
-
--- CONSTANTS
-
 vector.DOWN = vector(0, 1)
 vector.UP = vector(0, -1)
 vector.LEFT = vector(-1, 0)
 vector.RIGHT = vector(1, 0)
 vector.ZERO = vector(0, 0)
 vector.ONE = vector(1, 1)
-
 return vector
