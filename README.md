@@ -75,82 +75,82 @@ b = -b --> vector(-3, -2)
 ## Functions
 
 ```lua
-vector:angle()
+vector.angle(vector)
 ```
 Returns the angle of vector in radians.
 
 ```lua
-vector:normalized()
+vector.normalized(vector)
 ```
 Set the vector normalized. Normalizing a vector means reducing its length to 1 while preserving its direction.
 
 ```lua
-vector:distanceTo(vector)
+vector.distanceTo(vector1, vector2)
 ```
 Returns the distance between 2 vectors.
 
 ```lua
-vector:distanceSquaredTo(vector)
+vector.distanceSquaredTo(vector1, vector2)
 ```
 Returns the distance squared between 2 vectors.
 
 ```lua
-vector:distance()
+vector.distance(vector)
 ```
 Returns the distance of the vector.
 
 ```lua
-vector:distanceSquared()
+vector.distanceSquared(vector)
 ```
 Returns the distance squared of the vector.
 
 ```lua
-vector:dot(vector)
+vector.dot(vector1, vector2)
 ```
 Returns the [dot product](https://en.wikipedia.org/wiki/Dot_product) of 2 vectors.
 
 ```lua
-vector:perpDot(vector)
+vector.perpDot(vector1, vector2)
 ```
 Returns the [Perp Dot Product](http://mathworld.wolfram.com/PerpDotProduct.html) of 2 vectors.
 
 ```lua
-vector:toPolar(angle, lenght)
+vector.toPolar(vector, angle, lenght)
 ```
 Set the vector to the polar coordinate.
 
 ```lua
-vector:abs()
+vector.abs(vector)
 ```
 Set the absolute value of the vector.
 
 ```lua
-vector:round(decimals)
+vector.round(vector, decimals)
 ```
 Set the vector with `decimals`, 0 or ignore for integer number. Example: `vector(2.5, 3.4):round() --> vector(3, 3)`
 
 ```lua
-vector:rotated(phi)
+vector.rotated(vector, phi)
 ```
 Set the vector rotated by `phi`radians.
 
 ```lua
-vector:cross(vector)
+vector.cross(vector1, vector2)
 ```
 Returns the 2 dimensional analog of the cross product with the given vector.
 
 ```lua
-vector:perpendicular()
+vector.perpendicular(vector)
 ```
 Set the vector rotated 90°.
 
 ```lua
-vector:lerpTo(vector, time)
+vector.lerpTo(vector1, vector2, time)
 ```
 Set the result of the linear interpolation between this vector and `vector` by amount `time`. `time` is in the range of 0.0 - 1.0, representing the amount of interpolation.
 
 ```lua
-vector:unpack()
+vector.unpack(vector)
 ```
 Returns `x, y` value of the vector.
 
