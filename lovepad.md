@@ -7,7 +7,7 @@ Virtual gamepad for love2d
 ### Require
 
 ```lua
-local vector = require "game-tools.lovepad"
+local lovepad = require "game-tools.lovepad"
 ```
 
 
