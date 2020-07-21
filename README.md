@@ -13,12 +13,6 @@ You can download libraries or use luarocks.
 
 ```$ luarocks install game-tools```
 
-### Require
-
-```lua
-local vector = require "game-tools.vector"
-```
-
 ## Libraries
 
 - [Vector 2D](https://github.com/DeybisMelendez/game-tools/blob/master/vector.md)
