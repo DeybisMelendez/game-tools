@@ -30,7 +30,7 @@ Note: The button is instanced in `lovepad.buttons`.
 lovepad:setGamePad()
 ```
 
-## Screenshot, read main.lua
+## Screenshot example
 
 ![screenshot](https://raw.githubusercontent.com/DeybisMelendez/game-tools/master/lovepad.png)
 
