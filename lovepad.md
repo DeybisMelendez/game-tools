@@ -7,7 +7,7 @@ Virtual gamepad for love2d
 ### Require
 
 ```lua
-local vector = require "game-tools.lovepad"
+local lovepad = require "game-tools.lovepad"
 ```
 
 
@@ -30,9 +30,9 @@ Note: The button is instanced in `lovepad.buttons`.
 lovepad:setGamePad()
 ```
 
-## Screenshot, read main.lua
+## Screenshot example
 
-![screenshot](https://raw.githubusercontent.com/DeybisMelendez/game-tools/blob/master/lovepad.png)
+![screenshot](https://raw.githubusercontent.com/DeybisMelendez/game-tools/master/lovepad.png)
 
 ## Button Properties
 
