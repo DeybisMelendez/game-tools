@@ -32,7 +32,7 @@ lovepad:setGamePad()
 
 ## Screenshot, read main.lua
 
-![screenshot](https://raw.githubusercontent.com/DeybisMelendez/game-tools/blob/master/lovepad.png)
+![screenshot](https://raw.githubusercontent.com/DeybisMelendez/game-tools/master/lovepad.png)
 
 ## Button Properties
 
