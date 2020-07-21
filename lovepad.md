@@ -1,17 +1,15 @@
 # lovepad
-Virtual gamepad for love2d
 
-[![Build Status](https://travis-ci.org/DeybisMelendez/lovepad.svg?branch=master)](https://travis-ci.org/DeybisMelendez/lovepad)
-[![License](http://img.shields.io/badge/License-MIT-brightgreen.svg)](LICENSE)
+Virtual gamepad for love2d
 
 ## How to use
 
-Download `lovepad.lua` and write in your `main.lua`:
+### Require
+
 ```lua
-lovepad = require "lovepad"
+local vector = require "game-tools.lovepad"
 ```
 
-Note: Read or test `main.lua` as example.
 
 ## Creating a button
 
@@ -34,7 +32,7 @@ lovepad:setGamePad()
 
 ## Screenshot, read main.lua
 
-![screenshot](https://raw.githubusercontent.com/DeybisMelendez/lovepad/master/screenshot.png)
+![screenshot](https://raw.githubusercontent.com/DeybisMelendez/game-tools/blob/master/lovepad.png)
 
 ## Button Properties
 

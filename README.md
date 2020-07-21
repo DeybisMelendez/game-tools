@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/DeybisMelendez/lua-vector.svg?branch=master)](https://travis-ci.org/DeybisMelendez/lua-vector)
+[![Build Status](https://travis-ci.org/DeybisMelendez/game-tools.svg?branch=master)](https://travis-ci.org/DeybisMelendez/game-tools)
 [![License](http://img.shields.io/badge/License-MIT-brightgreen.svg)](LICENSE)
 
 # game-tools
@@ -15,5 +15,5 @@ You can download libraries or use luarocks.
 
 ## Libraries
 
-- [Vector 2D](https://github.com/DeybisMelendez/game-tools/vector.md)
-- [lovepad - A gamepad for multitouch](https://github.com/DeybisMelendez/game-tools/lovepad.md)
+- [Vector 2D](https://github.com/DeybisMelendez/game-tools/blob/master/vector.md)
+- [Lovepad - A gamepad for multitouch](https://github.com/DeybisMelendez/game-tools/blob/master/lovepad.md)
