@@ -7,10 +7,14 @@ Vector 2d for Love2d and Lua. Inspired on Vector2() of Godot Engine.
 
 ## How to use
 
-Download vector.lua and write on main.lua
+### Install
+
+```$ luarocks install game-tools```
+
+### Require
 
 ```lua
-vector = require "vector"
+local vector = require "game-tools.vector"
 ```
 
 ## Properties
