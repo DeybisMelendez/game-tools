@@ -1,4 +1,4 @@
-local color = {_VERSION = "v0.1.0", _TYPE = "module", _NAME = "vector"}
+local color = {_VERSION = "v0.1.0", _TYPE = "module", _NAME = "color"}
 local newColorMt = {
     __tostring = function(s)
         return "color(" .. s.r .. ", " .. s.g .. ", " .. s.b .. ", " .. s.a ..")"
@@ -68,22 +68,36 @@ end
 function color.hexcode(str)
     if #str == 6 then
         local r,g,b = tonumber(str:sub(1,2),16), tonumber(str:sub(3,4),16), tonumber(str:sub(5,6),16)
-        return color(r,g,b)
+        return color.rgb(r,g,b)
     elseif #str == 8 then
         local r,g,b = tonumber(str:sub(1,2),16), tonumber(str:sub(3,4),16), tonumber(str:sub(5,6),16)
         local a = tonumber(str:sub(7,8),16)
-        return color(r,g,b,a)
+        return color.rgba(r,g,b,a)
     end
 end
 
-function color.inverted(c)
-    return color(1-c.r,1-c.g,1-c.b,c.a)
+function color.rgb(r,g,b)
+    local max = 255
+    return color(r/max,g/max,b/max)
 end
 
-function color.blend(c1,c2)
-    local r,g,b,a = c1.r+c2.r, c1.g+c2.g,c1.b+c2.b,c1.a+c2.a
-    return color(r/2,g/2,b/2,a/2)
+function color.rgba(r,g,b,a)
+    local max = 255
+    return color(r/max,g/max,b/max,a/max)
 end
+
+-- function color.inverted(c)
+--     return color(1-c.r,1-c.g,1-c.b,c.a)
+-- end
+
+-- function color.blend(c1, c2)
+--     local r,g,b,a = c1.r+c2.r, c1.g+c2.g,c1.b+c2.b,c1.a+c2.a
+--     --local r = (c.r*c.a) * ((1-c.a) * bg.r)
+--     --local g = (c.g*c.a) * ((1-c.a) * bg.g)
+--     --local b = (c.b*c.a) * ((1-c.a) * bg.b)
+--     return color(r,g,b,a)
+-- end
 
 setmetatable(color, mt)
+
 return color
