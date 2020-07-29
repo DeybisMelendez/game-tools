@@ -1,5 +1,5 @@
 package = "game-tools"
-version = "0.2.0-2"
+version = "0.3.0-3"
 source = {
    url = "git+https://github.com/DeybisMelendez/game-tools"
 }
@@ -8,7 +8,9 @@ description = {
    detailed = [[Include:
 
 - Vector 2D.
-- Lovepad - A gamepad for multitouch devices.]],
+- Lovepad - Create buttons for multitouch devices.
+- Texturelovepad - Create texture buttons for multitouch devices.
+- Color - Color math and utilities]],
    homepage = "https://github.com/DeybisMelendez/game-tools",
    license = "MIT"
 }
@@ -17,6 +19,8 @@ build = {
    type = "builtin",
    modules = {
        ["game-tools.vector"] = "vector.lua",
-       ["game-tools.lovepad"] = "lovepad.lua"
+       ["game-tools.lovepad"] = "lovepad.lua",
+       ["game-tools.texturelovepad"] = "texturelovepad.lua",
+       ["game-tools.color"] = "color.lua"
    }
 }
