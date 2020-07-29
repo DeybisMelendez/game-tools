@@ -102,7 +102,7 @@ this = color(r,g,b) - a --> vector(r-a, g-a, b-a)
 ### Multiplication
 
 ```lua
-this = color(ra,ga,ba) + color(rb,gb,bb) --> vector(ra*rb, ga*gb, ba*bb)
+this = color(ra,ga,ba) * color(rb,gb,bb) --> vector(ra*rb, ga*gb, ba*bb)
 this = color(r,g,b) * a --> vector(r*a, g*a, b*a)
 ```
 
