@@ -1,5 +1,5 @@
 package = "game-tools"
-version = "0.3.0-3"
+version = "0.4.0-3"
 source = {
    url = "git+https://github.com/DeybisMelendez/game-tools"
 }
