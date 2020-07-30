@@ -15,5 +15,8 @@ You can download libraries or use luarocks.
 
 ## Libraries
 
-- [Vector 2D](https://github.com/DeybisMelendez/game-tools/blob/master/vector.md)
-- [Lovepad - A gamepad for multitouch](https://github.com/DeybisMelendez/game-tools/blob/master/lovepad.md)
+- [Vector 2D](https://github.com/DeybisMelendez/game-tools/blob/master/doc/vector.md)
+- [Lovepad - A gamepad for multitouch](https://github.com/DeybisMelendez/game-tools/blob/master/doc/lovepad.md)
+- [Texturelovepad - A texture gamepad for multitouch](https://github.com/DeybisMelendez/game-tools/blob/master/doc/texturelovepad.md)
+- [Color - Color tool](https://github.com/DeybisMelendez/game-tools/blob/master/doc/color.md)
+- [Scene](https://github.com/DeybisMelendez/game-tools/blob/master/doc/scene.md)

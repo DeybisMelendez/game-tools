@@ -32,7 +32,7 @@ lovepad:setGamePad()
 
 ## Screenshot example
 
-![screenshot](https://raw.githubusercontent.com/DeybisMelendez/game-tools/master/lovepad.png)
+![screenshot](https://raw.githubusercontent.com/DeybisMelendez/game-tools/master/doc/lovepad.png)
 
 ## Button Properties
 
